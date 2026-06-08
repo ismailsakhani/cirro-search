@@ -1,0 +1,22 @@
+# Documentation (internal planning files)
+doc/
+
+# Generated wiki files
+wiki/
+
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/.pytest_cache/
+backend/**/*.pyc
+backend/.env
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+
+doc/

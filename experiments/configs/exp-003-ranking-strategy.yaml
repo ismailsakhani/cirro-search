@@ -1,0 +1,25 @@
+# Experiment 003 — Ranking Strategy
+# Question: Does domain reranking (BasicRanker) beat pure ES relevance score?
+# Axis: whether BasicRanker post-processes ES hits or ES score is used directly
+# Variants: domain (current — ranker applies boosts), es-score (raw ES order), popularity-first
+# Hypothesis: Domain ranker is essential — ES score alone loses on digits/codeshare disambiguation
+
+id: exp-003-ranking-strategy
+name: Ranking Strategy
+description: >
+  Compare domain reranking (exact match boost + type alignment + popularity)
+  against raw ES relevance score and popularity-weighted ordering.
+  Key case: '4433' must return UA4433 not AA4433/DL4433.
+axis: ranking_strategy
+variants:
+  - name: domain
+    strategy: domain
+    description: "Current: BasicRanker applies exact-match, type-alignment, popularity boosts"
+  - name: es-score
+    strategy: es_score
+    description: "Raw ES score only — no domain reranking"
+  - name: popularity-first
+    strategy: popularity_first
+    description: "Sort by popularity metadata field before ES score"
+evaluation:
+  suites: [phase1, regression]

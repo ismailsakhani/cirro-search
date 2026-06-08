@@ -1,0 +1,140 @@
+# Phase 2 regression cases
+# Extended queries from vision.md + known Cirrostrats bugs as regression coverage.
+# All cases must pass before Phase 2 is complete.
+
+cases:
+  # --- Extended airport queries (vision.md) ---
+
+  - query: ewr
+    mode: submit
+    expect:
+      type: airport
+      iata: EWR
+
+  - query: kewr
+    mode: submit
+    expect:
+      type: airport
+      iata: EWR
+
+  - query: newark
+    mode: submit
+    expect:
+      type: airport
+      iata: EWR
+
+  - query: las
+    mode: submit
+    expect:
+      type: airport
+      iata: LAS
+    note: "Cirrostrats bug: 'las' prefix miss. ES resolves correctly via exact IATA match."
+
+  # --- Known Cirrostrats bugs (regression coverage) ---
+
+  - query: perry
+    mode: submit
+    expect:
+      type: airport
+      iata: FPY
+    note: "Cirrostrats bug: perry → FPY selection didn't work. Alias resolver + seed fix."
+
+  - query: CYOW
+    mode: submit
+    expect:
+      type: airport
+      iata: YOW
+    note: "Cirrostrats bug: Canadian ICAO CYOW returned Ottawa but display showed wrong code."
+
+  # --- City name searches ---
+
+  - query: denver
+    mode: submit
+    expect:
+      type: airport
+      iata: DEN
+
+  - query: boston logan
+    mode: submit
+    expect:
+      type: airport
+      iata: BOS
+
+  - query: atlanta
+    mode: submit
+    expect:
+      type: airport
+      iata: ATL
+
+  # --- Deduplication: same airport from multiple sources should return once ---
+
+  - query: chicago ohare
+    mode: submit
+    expect:
+      type: airport
+      iata: ORD
+    note: "Dedup check: ORD appears via alias + airport name. Top result must be ORD, not duplicate."
+
+  # --- Canadian airports ---
+
+  - query: YYZ
+    mode: submit
+    expect:
+      type: airport
+      iata: YYZ
+
+  - query: toronto
+    mode: submit
+    expect:
+      type: airport
+      iata: YYZ
+
+  # --- Extended flight queries ---
+
+  - query: ua500
+    mode: submit
+    expect:
+      type: flight
+      iata_flight: UA500
+
+  - query: dal500
+    mode: submit
+    expect:
+      type: flight
+      iata_flight: DL500
+
+  # --- Extended gate queries ---
+
+  - query: b17
+    mode: submit
+    expect:
+      type: gate
+      gate: B17
+
+  - query: ewr b17
+    mode: submit
+    expect:
+      type: gate
+      gate: B17
+      airport: EWR
+
+  - query: ord c17
+    mode: submit
+    expect:
+      type: gate
+      gate: C17
+      airport: ORD
+
+  # --- Autocomplete mode ---
+
+  - query: newark
+    mode: autocomplete
+    expect:
+      type: airport
+      iata: EWR
+
+  - query: ua44
+    mode: autocomplete
+    expect:
+      type: flight
+      iata_flight: UA44

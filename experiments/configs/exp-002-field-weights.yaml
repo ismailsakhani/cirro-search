@@ -1,0 +1,33 @@
+# Experiment 002 — Field Weights
+# Question: Does boosting exact code fields more aggressively improve ranking precision?
+# Axis: boost multipliers on iata/icao/iata_flight/icao_flight/gate fields
+# Variants: default (^8), high (^12), balanced (^6/^4 distribution)
+# Hypothesis: High boost on exact code fields improves disambiguation for 3-letter queries
+
+id: exp-002-field-weights
+name: Field Weights
+description: >
+  Test whether higher boosts on exact code fields (IATA/ICAO/gate) improve
+  ranking precision, especially for short code queries like 'las' or 'c101'.
+axis: field_weights
+variants:
+  - name: default
+    code_boost: 8
+    flight_boost: 8
+    searchable_boost: 4
+    aliases_boost: 3
+    name_boost: 3
+  - name: high-code
+    code_boost: 12
+    flight_boost: 12
+    searchable_boost: 3
+    aliases_boost: 2
+    name_boost: 2
+  - name: balanced
+    code_boost: 6
+    flight_boost: 6
+    searchable_boost: 5
+    aliases_boost: 4
+    name_boost: 4
+evaluation:
+  suites: [phase1, regression]

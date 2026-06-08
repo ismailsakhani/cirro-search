@@ -1,0 +1,55 @@
+cases:
+  - query: newrk
+    mode: submit
+    expect:
+      type: airport
+      iata: EWR
+
+  - query: newark airport
+    mode: submit
+    expect:
+      type: airport
+      iata: EWR
+
+  - query: vegas airport
+    mode: submit
+    expect:
+      type: airport
+      iata: LAS
+
+  - query: harry reid
+    mode: submit
+    expect:
+      type: airport
+      iata: LAS
+
+  - query: ua4433
+    mode: submit
+    expect:
+      type: flight
+      iata_flight: UA4433
+
+  - query: "4433"
+    mode: submit
+    expect:
+      type: flight
+      flight_number: "4433"
+
+  - query: united 4433
+    mode: submit
+    expect:
+      type: flight
+      iata_flight: UA4433
+
+  - query: c101
+    mode: submit
+    expect:
+      type: gate
+      gate: C101
+
+  - query: ewr c101
+    mode: submit
+    expect:
+      type: gate
+      gate: C101
+      airport: EWR

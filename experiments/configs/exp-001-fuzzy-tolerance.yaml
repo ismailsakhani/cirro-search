@@ -1,0 +1,21 @@
+# Experiment 001 — Fuzzy Tolerance
+# Question: Does tighter or looser edit distance tolerance improve/hurt aviation query accuracy?
+# Axis: fuzziness parameter in ES multi_match queries
+# Variants: AUTO (ES default), 1 (tight), 2 (loose)
+# Hypothesis: AUTO performs best — fuzziness=2 risks wrong-airport collisions on 3-letter codes
+
+id: exp-001-fuzzy-tolerance
+name: Fuzzy Tolerance
+description: >
+  Compare AUTO fuzziness (ES default) vs fixed edit distances.
+  Aviation codes are short (3-4 chars) — loose fuzziness risks EWR matching ERW or similar.
+axis: fuzzy_tolerance
+variants:
+  - name: auto
+    fuzziness: AUTO
+  - name: fixed-1
+    fuzziness: "1"
+  - name: fixed-2
+    fuzziness: "2"
+evaluation:
+  suites: [phase1, regression]

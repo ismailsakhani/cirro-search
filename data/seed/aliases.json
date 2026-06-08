@@ -1,0 +1,17 @@
+[
+  { "term": "newrk", "entity_id": "airport:EWR", "entity_type": "airport" },
+  { "term": "newark airport", "entity_id": "airport:EWR", "entity_type": "airport" },
+  { "term": "newark", "entity_id": "airport:EWR", "entity_type": "airport" },
+  { "term": "vegas airport", "entity_id": "airport:LAS", "entity_type": "airport" },
+  { "term": "vegas", "entity_id": "airport:LAS", "entity_type": "airport" },
+  { "term": "harry reid", "entity_id": "airport:LAS", "entity_type": "airport" },
+  { "term": "united 4433", "entity_id": "flight:UA4433", "entity_type": "flight" },
+  { "term": "ewr c101", "entity_id": "gate:EWR:C101", "entity_type": "gate" },
+  { "term": "perry", "entity_id": "airport:FPY", "entity_type": "airport" },
+  { "term": "perry airport", "entity_id": "airport:FPY", "entity_type": "airport" },
+  { "term": "ottawa", "entity_id": "airport:YOW", "entity_type": "airport" },
+  { "term": "denver", "entity_id": "airport:DEN", "entity_type": "airport" },
+  { "term": "boston logan", "entity_id": "airport:BOS", "entity_type": "airport" },
+  { "term": "chicago ohare", "entity_id": "airport:ORD", "entity_type": "airport" },
+  { "term": "los angeles airport", "entity_id": "airport:LAX", "entity_type": "airport" }
+]

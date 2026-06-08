@@ -1,0 +1,1 @@
+"""cirro-search backend application."""
