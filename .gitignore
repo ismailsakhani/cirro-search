@@ -1,8 +1,7 @@
 # Documentation (internal planning files)
 doc/
 
-# Generated wiki files
-wiki/
+
 
 # Python
 backend/.venv/
